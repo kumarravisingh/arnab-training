@@ -24,6 +24,7 @@ class TestController extends Controller
         });
         App::bind('Interfaces/BillingNotifierInterface', function (){
             return new SmsNotifier;
+            //return binding to sms
         });
         $this->biller->bill(array('ravi'),10);
         return 'billed';
