@@ -8,3 +8,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('test-auth','HomeController@testAuth');
+
+Route::get('/save','Tarrang@saveData');
