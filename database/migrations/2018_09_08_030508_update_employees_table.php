@@ -13,9 +13,9 @@ class UpdateEmployeesTable extends Migration
      */
     public function up()
     {
-        Schema::table('employees', function($table) {
-            $table->integer('paid');
-        });
+        // Schema::table('employees', function($table) {
+        //     $table->integer('paid');
+        // });
     }
 
     /**
