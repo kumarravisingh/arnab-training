@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Employee;
-use Crypt;
-use Session;
+use Illuminate\Support\Facades\Hash;
 
 class Tarrang extends Controller
 {
     public function getData(){
 
     	
-        //return printHello();
+        return printHello();
     }
 
     /*
@@ -24,8 +24,20 @@ class Tarrang extends Controller
 		//$nameOfUser = $request->input('name','nothing');
 		//$encryptedData = Crypt::encrypt($nameOfUser);
 		//return Crypt::decrypt($encryptedData);
-     	//$employee = new Employee();
-     	//$employee->create(['name'=>'abhishek']);
+         $user = new User();
+         $user->name = 'abhishek';
+         $user->email='test'.mt_rand(0,888).'@tarun.com';
+         $user->password= Hash::make('name');
+         $user->save();
+
+
+         $employee = new Employee();
+     	$employee->create(
+     	    [
+     	        'user_id'=>$user->id,
+                'name'=>'abhishek'
+            ]
+        );
      	//$employee->name = 'kumar';
      	//$employee->paid = 20;
      	//$employee->save();
@@ -47,7 +59,17 @@ class Tarrang extends Controller
         return printHello();
 	}
 	
-	public function view(){
+	public function view(Request $request){
+
+         $user = User::find($request->id);
+         return $user->employee->groupBy('id');
+        // $employees = $user->employee;
+         /*foreach ($employees as $employee){
+             echo 'User ID '.$user->id. ' Employee Name '.$employee->name.'<br>';
+         }*/
+
+
+
 		return view('structure.indexPage');
 	}
 }

@@ -3,7 +3,7 @@
 Route::get('/',function(){
     return view('welcome');
 });
-Route::get('/hello','Tarrang@getData')->name('newFileRoute');
+Route::get('/tarang','Tarrang@getData')->name('newFileRoute');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

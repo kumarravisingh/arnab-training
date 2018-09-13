@@ -25,8 +25,8 @@ class UpdateEmployeesTable extends Migration
      */
     public function down()
     {
-        Schema::table('employees', function($table) {
+        /*Schema::table('employees', function($table) {
             $table->dropColumn('paid');
-        });  
+        });  */
     }
 }

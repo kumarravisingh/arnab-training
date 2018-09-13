@@ -26,4 +26,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /*
+     * relationship between user and employee
+     *
+     * */
+    public function employee(){
+        //return $this->hasOne(Employee::class,'user_id');
+        return $this->hasMany('App\Employee','user_id');
+
+    }
 }
